@@ -572,18 +572,17 @@ void CameraSource::startCameraRecording() {
     // camera and recording is started by the applications. The applications
     // will connect to the camera in ICameraRecordingProxy::startRecording.
     int64_t token = IPCThreadState::self()->clearCallingIdentity();
-    if (mNumInputBuffers > 0) {
-        status_t err = mCamera->sendCommand(
-            CAMERA_CMD_SET_VIDEO_BUFFER_COUNT, mNumInputBuffers, 0);
+//    if (mNumInputBuffers > 0) {
+//        status_t err = mCamera->sendCommand(
+//            CAMERA_CMD_SET_VIDEO_BUFFER_COUNT, mNumInputBuffers, 0);
 
         // This could happen for CameraHAL1 clients; thus the failure is
         // not a fatal error
-        if (err != OK) {
-            ALOGW("Failed to set video buffer count to %d due to %d",
-                mNumInputBuffers, err);
-        }
-    }
-
+//        if (err != OK) {
+//            ALOGW("Failed to set video buffer count to %d due to %d",
+//                mNumInputBuffers, err);
+//        }
+//    }
     if (mCameraFlags & FLAGS_HOT_CAMERA) {
         mCamera->unlock();
         mCamera.clear();
